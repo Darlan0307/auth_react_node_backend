@@ -16,7 +16,7 @@ export class AuthController{
       // Verificando senha
       const isValuePassword = await bcrypt.compare(password,userExists.password)
 
-      if(!isValuePassword) return res.status(401).json({error:"Senha inválida"})
+      if(!isValuePassword) return res.status(401).json({message:"Senha inválida"})
 
       const secret = process.env.SECRET
 

@@ -11,7 +11,7 @@ export function AuthMiddleWares(req:Request,res:Response,next:NextFunction){
   const { authorization } = req.headers
 
   if(!authorization){
-    return res.status(401).json({error: "Token not provided"})
+    return res.status(401).json({message: "Token not provided"})
   }
 
   const [,token] = authorization.split(" ")
@@ -24,6 +24,6 @@ export function AuthMiddleWares(req:Request,res:Response,next:NextFunction){
     next();
     
   } catch (error) {
-    return res.status(401).json({error: "Token invalid"}) 
+    return res.status(401).json({message: "Token invalid"}) 
   }
 }
