@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { UserController } from "./controllers/UserController";
 import { AuthController } from "./controllers/AuthController";
+import { AuthMiddleWares } from "./middlewares/AuthMiddleWares";
 
 const usercontrollers = new UserController()
 const authcontroller = new AuthController()
@@ -13,7 +14,7 @@ routes.get("/",(req,res)=>{
 
 routes.post("/create",usercontrollers.createUser)
 
-routes.get("/users",usercontrollers.listerUsers)
+routes.get("/users",AuthMiddleWares,usercontrollers.listerUsers)
 
 routes.post("/auth",authcontroller.authUser)
 
